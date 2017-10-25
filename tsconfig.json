@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+
+    "outDir": "./dist",
+
+    "charset": "utf-8",
+    "newLine": "LF",
+
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "alwaysStrict": true,
+    "noImplicitUseStrict": false,
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "noEmitHelpers": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true,
+
+    "allowSyntheticDefaultImports": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "allowJs": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noStrictGenericChecks": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "suppressExcessPropertyErrors": false,
+    "suppressImplicitAnyIndexErrors": false,
+
+    "lib": [
+      "dom",
+      "es5",
+      "es6",
+      "es7",
+      "esnext"
+    ],
+
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "lib/**/*.ts",
+    "config/**/*.ts"
+  ]
+}
