@@ -47,7 +47,6 @@ export const webpackAotConfig: WebpackAotConfigFunc =
         plugins: [
           new htmlWebpackPlugin({
             template: opts.indexHtmlPath,
-            inject: false,
             minify: {
               caseSensitive: true,
               collapseInlineTagWhitespace: true,

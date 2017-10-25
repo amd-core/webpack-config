@@ -1,6 +1,6 @@
 {
   "name": "@amd-core/webpack-config",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Common Webpack config for AMD Core",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

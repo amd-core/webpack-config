@@ -125,7 +125,6 @@ export const webpackCommonConfig: WebpackCommonConfigFunc =
         new optimizeCssAssetsWebpackPlugin(),
         new htmlWebpackPlugin({
           template: opts.indexHtmlPath,
-          inject: false
         }),
         new DefinePlugin({
           ENV: JSON.stringify(envConfig.env),
