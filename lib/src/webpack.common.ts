@@ -124,7 +124,8 @@ export const webpackCommonConfig: WebpackCommonConfigFunc =
         new extractTextPlugin('css/[name].[hash].css'),
         new optimizeCssAssetsWebpackPlugin(),
         new htmlWebpackPlugin({
-          template: opts.indexHtmlPath
+          template: opts.indexHtmlPath,
+          inject: false
         }),
         new DefinePlugin({
           ENV: JSON.stringify(envConfig.env),
