@@ -104,7 +104,7 @@ export const webpackCommonConfig: WebpackCommonConfigFunc =
           {
             test: /\.scss$/,
             include: opts.appDirectory,
-            use: ['raw-loader', 'postcss-loader', sassLoader]
+            use: ['css-to-string-loader', 'css-loader', 'resolve-url-loader', 'postcss-loader', sassLoader]
           },
           {
             test: /\.scss$/,
