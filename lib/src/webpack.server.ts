@@ -44,16 +44,30 @@ export const webpackServerConfig: WebpackServerConfigFunc =
         rules: [
           {
             test: /\.html$/,
-            use: 'html-loader'
+            use: [
+              {
+                loader: 'html-loader',
+                options: {
+                  minimize: true,
+                  caseSensitive: true,
+                  quoteCharacter: "\"",
+                  removeAttributeQuotes: false
+                }
+              }
+            ]
           },
           {
             test: /\.scss$/,
-            use: ['raw-loader', {
-              loader: 'sass-loader',
-              options: {
-                includePaths: opts.sassIncludePaths
-              }
-            }]
+            use: [
+              'css-to-string-loader',
+              'css-loader',
+              'resolve-url-loader',
+              {
+                loader: 'sass-loader',
+                options: {
+                  includePaths: opts.sassIncludePaths
+                }
+              }]
           },
           {
             test: /\.ts$/,
