@@ -33,13 +33,21 @@ export const webpackAotConfig: WebpackAotConfigFunc =
       }),
       <{}>{
         module: {
-          rules: [{
-            test: /\.ts$/,
-            use: [
-              'ng-router-loader',
-              '@ngtools/webpack'
-            ]
-          }]
+          rules: [
+            {
+              test: /\.html$/,
+              use: 'html-loader',
+              options: {
+                minimize: true
+              }
+            },
+            {
+              test: /\.ts$/,
+              use: [
+                'ng-router-loader',
+                '@ngtools/webpack'
+              ]
+            }]
         },
 
         plugins: [
