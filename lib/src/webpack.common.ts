@@ -4,7 +4,6 @@ import * as cleanWebpackPlugin from 'clean-webpack-plugin';
 import * as optimizeCssAssetsWebpackPlugin from 'optimize-css-assets-webpack-plugin';
 
 import { Configuration, ContextReplacementPlugin, DefinePlugin, optimize } from 'webpack';
-import { resolve } from 'path';
 
 import * as envConfig from './env';
 
@@ -18,8 +17,6 @@ interface ISassLoader {
 
 export interface IEntry {
   main: string;
-  vendor?: string;
-  polyfills?: string;
 }
 
 const sassLoader: ISassLoader = {
@@ -49,7 +46,6 @@ export const webpackCommonConfig: WebpackCommonConfigFunc =
 
     return {
       entry: {
-        polyfills: resolve(__dirname, '..', '..', 'bundles', 'polyfills.ts'),
         ...opts.entry
       },
 
@@ -132,9 +128,6 @@ export const webpackCommonConfig: WebpackCommonConfigFunc =
         }),
         new cleanWebpackPlugin([opts.buildDirectory], {
           root: opts.rootDirectory
-        }),
-        new optimize.CommonsChunkPlugin(<{}> {
-          name: ['main', 'vendor', 'polyfills']
         }),
         new optimize.CommonsChunkPlugin({
           name: 'manifest',

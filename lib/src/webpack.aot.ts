@@ -3,7 +3,6 @@ import * as ngTools from '@ngtools/webpack';
 import { Configuration, NoEmitOnErrorsPlugin } from 'webpack';
 import * as webpackMerge from 'webpack-merge';
 import * as uglifyJSPlugin from 'uglifyjs-webpack-plugin';
-import { resolve } from 'path';
 
 import { webpackCommonConfig, IWebpackCommonConfigOpts } from './webpack.common';
 
@@ -22,7 +21,6 @@ export const webpackAotConfig: WebpackAotConfigFunc =
     return webpackMerge(
       webpackCommonConfig({
         entry: {
-          vendor: resolve(__dirname, '..', '..', 'bundles', 'vendor.jit.ts'),
           ...opts.entry
         },
         sassIncludePaths: opts.sassIncludePaths,

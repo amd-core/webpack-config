@@ -1,8 +1,6 @@
 import { Configuration } from 'webpack';
 import * as webpackMerge from 'webpack-merge';
 
-import { resolve } from 'path';
-
 import { IWebpackCommonConfigOpts, webpackCommonConfig } from './webpack.common.js';
 
 export interface IWebpackConfigOpts extends IWebpackCommonConfigOpts {
@@ -16,7 +14,6 @@ export const webpackConfig: WebpackConfigFunc =
     webpackMerge(
       webpackCommonConfig({
         entry: {
-          vendor: resolve(__dirname, '..', '..', 'bundles', 'vendor.jit.ts'),
           ...opts.entry
         },
         sassIncludePaths: opts.sassIncludePaths,
