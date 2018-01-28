@@ -1,4 +1,3 @@
-import * as htmlWebpackPlugin from 'html-webpack-plugin';
 import * as extractTextPlugin from 'extract-text-webpack-plugin';
 import * as cleanWebpackPlugin from 'clean-webpack-plugin';
 import * as optimizeCssAssetsWebpackPlugin from 'optimize-css-assets-webpack-plugin';
@@ -35,6 +34,7 @@ export interface IWebpackCommonConfigOpts {
   sourceDirectory: string;
   appDirectory: string;
   alias: { [key: string]: string };
+  faviconPath: string;
 }
 
 export type WebpackCommonConfigFunc = (opts: IWebpackCommonConfigOpts) => Configuration;
@@ -73,10 +73,6 @@ export const webpackCommonConfig: WebpackCommonConfigFunc =
 
       module: {
         rules: [
-          {
-            test: /\.html$/,
-            use: 'html-loader'
-          },
           {
             test: /\.(gif|png|jpe?g|svg|ico)$/i,
             loaders: [
@@ -119,9 +115,6 @@ export const webpackCommonConfig: WebpackCommonConfigFunc =
         ),
         new extractTextPlugin('css/[name].[hash].css'),
         new optimizeCssAssetsWebpackPlugin(),
-        new htmlWebpackPlugin({
-          template: opts.indexHtmlPath,
-        }),
         new DefinePlugin({
           ENV: JSON.stringify(envConfig.env),
           IS_PRODUCTION: JSON.stringify(envConfig.isProduction)

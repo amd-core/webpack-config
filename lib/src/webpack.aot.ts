@@ -29,17 +29,25 @@ export const webpackAotConfig: WebpackAotConfigFunc =
         buildDirectory: opts.buildDirectory,
         sourceDirectory: opts.sourceDirectory,
         alias: opts.alias,
-        appDirectory: opts.appDirectory
+        appDirectory: opts.appDirectory,
+        faviconPath: opts.faviconPath,
       }),
       <{}>{
         module: {
           rules: [
             {
               test: /\.html$/,
-              use: 'html-loader',
-              options: {
-                minimize: true
-              }
+              use: [
+                {
+                  loader: 'html-loader',
+                  options: {
+                    minimize: true,
+                    caseSensitive: true,
+                    quoteCharacter: "\"",
+                    removeAttributeQuotes: false
+                  }
+                }
+              ]
             },
             {
               test: /\.ts$/,
@@ -53,6 +61,7 @@ export const webpackAotConfig: WebpackAotConfigFunc =
         plugins: [
           new htmlWebpackPlugin({
             template: opts.indexHtmlPath,
+            favicon: opts.faviconPath,
             minify: {
               caseSensitive: true,
               collapseInlineTagWhitespace: true,

@@ -1,5 +1,6 @@
 import { Configuration } from 'webpack';
 import * as webpackMerge from 'webpack-merge';
+import * as htmlWebpackPlugin from 'html-webpack-plugin';
 
 import { IWebpackCommonConfigOpts, webpackCommonConfig } from './webpack.common.js';
 
@@ -22,11 +23,16 @@ export const webpackConfig: WebpackConfigFunc =
         buildDirectory: opts.buildDirectory,
         sourceDirectory: opts.sourceDirectory,
         alias: opts.alias,
-        appDirectory: opts.appDirectory
+        appDirectory: opts.appDirectory,
+        faviconPath: opts.faviconPath,
       }),
-      <{}> {
+      <{}>{
         module: {
           rules: [
+            {
+              test: /\.html$/,
+              use: 'html-loader'
+            },
             {
               test: /\.ts$/,
               enforce: 'pre',
@@ -51,5 +57,11 @@ export const webpackConfig: WebpackConfigFunc =
               ]
             }
           ]
-        }
+        },
+        plugins: [
+          new htmlWebpackPlugin({
+            template: opts.indexHtmlPath,
+            favicon: opts.faviconPath,
+          }),
+        ]
       });
